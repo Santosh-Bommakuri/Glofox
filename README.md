@@ -22,3 +22,9 @@ The general flow of a request through the application is as follows:
 4.  **Response Out:** The service returns the result to the handler, which then formats it into an HTTP response (typically JSON) using Gin.
 
 This layered and modular design promotes a clear separation of concerns, making the codebase more organized, maintainable, and testable.
+
+
+#To run the API:
+1. `go mod init Goflox`
+2. `go mod tidy`
+3. `go run main.go`
