@@ -41,7 +41,7 @@ func (s *InMemoryStore) CreateClass(class models.Class) error {
 }
 
 func (s *InMemoryStore) GetClassesByNameAndDate(name string, date time.Time) ([]models.Class, error) {
-	s.mu.RLock() // Use RLock for read operations
+	s.mu.RLock() 
 	defer s.mu.RUnlock()
 	dateKey := date.Format("2006-01-02")
 	if _, ok := s.classes[name]; ok {
@@ -51,7 +51,7 @@ func (s *InMemoryStore) GetClassesByNameAndDate(name string, date time.Time) ([]
 }
 
 func (s *InMemoryStore) AddBooking(booking models.Booking) error {
-	s.mu.Lock() // Use Lock for write operations
+	s.mu.Lock() 
 	defer s.mu.Unlock()
 	dateKey := booking.BookedDate.Format("2006-01-02")
 	if _, ok := s.bookings[booking.Class]; !ok {
@@ -64,7 +64,7 @@ func (s *InMemoryStore) AddBooking(booking models.Booking) error {
 }
 
 func (s *InMemoryStore) GetBookingsByClassAndDate(class string, date time.Time) ([]models.Booking, error) {
-	s.mu.RLock() // Use RLock for read operations
+	s.mu.RLock() 
 	defer s.mu.RUnlock()
 	dateKey := date.Format("2006-01-02")
 	if _, ok := s.bookings[class]; ok {
